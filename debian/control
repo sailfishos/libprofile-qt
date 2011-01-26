@@ -1,0 +1,32 @@
+Source: libprofile-qt
+Section: devel
+Priority: optional
+Maintainer: Matti Katila <matti.katila@ixonos.com>
+Build-Depends: debhelper (>= 5), libqt4-dev (>= 4.5), libmeegotouch-dev, doxygen
+Standards-Version: 3.7.3
+
+Package: libprofile-qt0
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, m-ringtones (>= 0.1), profiled (>= 0.11.0-1)
+Description: Qt library for profiles.
+
+Package: libprofile-qt-dev
+Section: libdevel
+Architecture: any
+Depends: libprofile-qt0, libqt4-dev (>= 4.5), ${shlibs:Depends}, ${misc:Depends}
+Description: Development headers for libprofile-qt library.
+
+Package: libprofile-qt-tests
+Section: extra
+Architecture: any
+Depends: ci-testing, ${shlibs:Depends}, ${misc:Depends}
+XB-Maemo-CI-Packages: ci-package
+XB-Maemo-CI-Stage: fast, staging, acceptance
+Description: Unit tests for libprofile-qt API.
+
+Package: libprofile-qt-doc
+Section: doc
+Architecture: any
+Description: API documentation for libprofile-qt.
+
