@@ -7,6 +7,8 @@ contains(cov, true) {
     QMAKE_LFLAGS += --coverage
 }
 
+unix:QMAKE_CXXFLAGS *= -fvisibility=hidden -fvisibility-inlines-hidden
+
 PROFILE_PREFIX = .
 
 DEFINES += PROFILE_QT
