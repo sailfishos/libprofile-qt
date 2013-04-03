@@ -10,7 +10,7 @@ contains(cov, true) {
     QMAKE_LFLAGS += --coverage
 }
 
-CONFIG += meegotouch link_prl
+CONFIG += link_prl
 QT += testlib dbus
 DEFINES += UNIT_TEST
 QMAKE_EXTRA_TARGETS = check
