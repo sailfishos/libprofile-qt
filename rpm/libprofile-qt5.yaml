@@ -11,6 +11,7 @@ Description: Qt5 wrapper library for profiles
 PkgConfigBR:
     - Qt5Core
     - Qt5DBus
+    - Qt5Test
 PkgBR:
     - doxygen
 Requires:
