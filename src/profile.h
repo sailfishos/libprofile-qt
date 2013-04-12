@@ -36,7 +36,6 @@
 #ifndef PROFILES_H
 #define PROFILES_H
 
-#include <QWidget>
 #include <QObject>
 #include <QStringList>
 #include <QList>
