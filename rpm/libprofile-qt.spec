@@ -9,7 +9,7 @@ Name:       libprofile-qt
 # << macros
 
 Summary:    Qt library for profiles
-Version:    0.34.0.3
+Version:    0.34.0.4
 Release:    1
 Group:      System/System Control
 License:    LGPLv2.1
