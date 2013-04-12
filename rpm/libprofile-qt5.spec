@@ -20,6 +20,7 @@ Requires:   profiled
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  doxygen
 
 %description
@@ -90,27 +91,27 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%{_libdir}/libprofile-qt.so.*
+%{_libdir}/libprofile-qt5.so.*
 # >> files
 # << files
 
 %files -n libprofile-qt5-devel
 %defattr(-,root,root,-)
-%{_libdir}/libprofile-qt.so
-%{_includedir}/profile-qt/Profile
-%{_includedir}/profile-qt/profile.h
+%{_libdir}/libprofile-qt5.so
+%{_includedir}/profile-qt5/Profile
+%{_includedir}/profile-qt5/profile.h
 # >> files libprofile-qt5-devel
 # << files libprofile-qt5-devel
 
 %files -n libprofile-qt5-tests
 %defattr(-,root,root,-)
-%{_libdir}/libprofile-qt-tests/ut_profile
-%{_datadir}/libprofile-qt-tests/tests.xml
+%{_libdir}/libprofile-qt5-tests/ut_profile
+%{_datadir}/libprofile-qt5-tests/tests.xml
 # >> files libprofile-qt5-tests
 # << files libprofile-qt5-tests
 
 %files -n libprofile-qt5-doc
 %defattr(-,root,root,-)
-%{_docdir}/libprofile-qt/*
+%{_docdir}/libprofile-qt5/*
 # >> files libprofile-qt5-doc
 # << files libprofile-qt5-doc

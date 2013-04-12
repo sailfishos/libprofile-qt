@@ -2,6 +2,7 @@ TEMPLATE = lib
 equals(QT_MAJOR_VERSION, 4): TARGET = profile-qt
 equals(QT_MAJOR_VERSION, 5): TARGET = profile-qt5
 QT += dbus
+QT -= gui
 contains(cov, true) { 
     message("Coverage options enabled")
     QMAKE_CXXFLAGS += --coverage
