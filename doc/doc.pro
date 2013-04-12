@@ -3,6 +3,7 @@ QMAKE_LINK = @: IGNORE THIS LINE
 
 QMAKE_EXTRA_TARGETS += doc
 QMAKE_EXTRA_COMPILER += doc
+QT -= gui
 
 doc.target        = html/index.html
 doc.config	 += no_check_exist no_link explicit_dependencies
