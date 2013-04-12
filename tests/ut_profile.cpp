@@ -48,7 +48,7 @@
 
 #include <QDBusConnection>
 
-#include <QApplication>
+#include <QCoreApplication>
 #include <QSignalSpy>
 
 
@@ -97,7 +97,7 @@ void Ut_Profile::initTestCase()
 {
     int argc = 1;
     char* app_name = (char*) "./ut_profile";
-    app = new QApplication(argc, &app_name);
+    app = new QCoreApplication(argc, &app_name);
 
     ProfilePrivate *priv = new ProfilePrivate();
     m_subject = new Profile(priv);

@@ -39,7 +39,7 @@
 #include <QtTest/QtTest>
 #include <QObject>
 #include <QDBusInterface>
-#include <QApplication>
+#include <QCoreApplication>
 
 #include <Profile>
 #include <profile_p.h>
@@ -88,7 +88,7 @@ private slots:
 private:
     Profile* m_subject;
     Profile* m_tmp;
-    QApplication *app;
+    QCoreApplication *app;
 
     MocDBus *mocDbus;
 };
