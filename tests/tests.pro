@@ -17,6 +17,7 @@ contains(cov, true) {
 
 CONFIG += link_prl
 QT += testlib dbus
+QT -= gui
 DEFINES += UNIT_TEST
 QMAKE_EXTRA_TARGETS = check
 check.depends = $$TARGET
