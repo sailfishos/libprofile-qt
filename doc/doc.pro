@@ -1,5 +1,6 @@
 system(doxygen doxyfile.cfg)
 
+TEMPLATE = subdirs
 QT -= gui
 
 htmldocs.files = html/*
