@@ -58,7 +58,7 @@ API documentation for libprofile-qt
 
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{name}-%{version}
 
 # >> setup
 # << setup
