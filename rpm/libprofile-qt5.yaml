@@ -1,0 +1,59 @@
+Name: libprofile-qt5
+Summary: Qt5 library for profiles
+Version: 0.34.0.4
+Release: 1
+Group: System/System Control
+License: LGPLv2.1
+URL: http://github.com/nemomobile/libprofile-qt
+Sources:
+    - "%{name}-%{version}.tar.bz2"
+Description: Qt5 wrapper library for profiles
+PkgConfigBR:
+    - Qt5Core
+PkgBR:
+    - doxygen
+Requires:
+    - profiled
+Configure: none
+Builder: qmake
+SetupOptions: "-q -n %{name}-%{version}"
+Files :
+    - "%{_libdir}/libprofile-qt5.so.*"
+
+
+SubPackages:
+ - Name: libprofile-qt5-devel
+   AsWholeName: True
+   Summary: Development headers for libprofile-qt5 library
+   Group: Development/Libraries
+   Requires:
+       - pkgconfig(Qt5Core)
+       - libprofile-qt5 = %{version}
+   Files:
+       - "%{_libdir}/libprofile-qt5.so"
+       - "%{_includedir}/profile-qt5/Profile"
+       - "%{_includedir}/profile-qt5/profile.h"
+   Description: |
+       Development headers for libprofile-qt5 library
+
+ - Name: libprofile-qt5-tests
+   AsWholeName: True
+   Summary: Unit tests for libprofile-qt5
+   Group: Development/System
+   Requires:
+       - libprofile-qt5 = %{version}
+   Files:
+       - "%{_libdir}/libprofile-qt5-tests/ut_profile"
+       - "%{_datadir}/libprofile-qt5-tests/tests.xml"
+   Description: |
+        Unit tests for libprofile-qt5
+
+ - Name: libprofile-qt5-doc
+   AsWholeName: True
+   BuildArch: noarch
+   Summary: API documentation for libprofile-qt5
+   Group: Documentation
+   Files:
+       - "%{_docdir}/libprofile-qt5/*"
+   Description: |
+        API documentation for libprofile-qt5
