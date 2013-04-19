@@ -17,7 +17,7 @@ PkgBR:
 Requires:
     - profiled
 Configure: none
-Builder: qmake
+Builder: qmake5
 SetupOptions: "-q -n %{name}-%{version}"
 Files :
     - "%{_libdir}/libprofile-qt5.so.*"
