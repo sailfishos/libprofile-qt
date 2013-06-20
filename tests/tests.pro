@@ -1,12 +1,12 @@
-equals(QT_MAJOR_VERSION, 4): system(cp tests.xml.template tests.xml)
-equals(QT_MAJOR_VERSION, 5): system(sed -e s/qt-tests/qt5-tests/g tests.xml.template > tests.xml)
+equals(QT_MAJOR_VERSION, 4): PACKAGENAME = libprofile-qt
+equals(QT_MAJOR_VERSION, 5): PACKAGENAME = libprofile-qt5
+
+system(sed -e s/@PACKAGENAME@/$${PACKAGENAME}/g tests.xml.template > tests.xml)
 
 TEMPLATE = app
 TARGET = ut_profile
-equals(QT_MAJOR_VERSION, 4): target.path = /usr/lib/libprofile-qt-tests
-equals(QT_MAJOR_VERSION, 5): target.path = /usr/lib/libprofile-qt5-tests
-equals(QT_MAJOR_VERSION, 4): xml.path = /usr/share/libprofile-qt-tests
-equals(QT_MAJOR_VERSION, 5): xml.path = /usr/share/libprofile-qt5-tests
+target.path = /usr/lib/$${PACKAGENAME}-tests
+xml.path = /usr/share/$${PACKAGENAME}-tests
 xml.files = tests.xml
 
 contains(cov, true) {
