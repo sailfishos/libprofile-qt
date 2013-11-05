@@ -105,10 +105,10 @@ void Ut_Profile::initTestCase()
     m_subject->d_ptr->dbus = mocDbus;
 
     m_subject->d_ptr->activeProfile = ProfileName::ringing;
-    m_subject->d_ptr->names[0] = ProfileName::ringing;
-    m_subject->d_ptr->names[1] = ProfileName::loud;
-    m_subject->d_ptr->names[2] = ProfileName::beep;
-    m_subject->d_ptr->names[3] = ProfileName::silent;
+    m_subject->d_ptr->names << ProfileName::ringing;
+    m_subject->d_ptr->names << ProfileName::loud;
+    m_subject->d_ptr->names << ProfileName::beep;
+    m_subject->d_ptr->names << ProfileName::silent;
     m_subject->d_ptr->vibras[0] = true;
     m_subject->d_ptr->vibras[1] = true;
     m_subject->d_ptr->vibras[2] = false;

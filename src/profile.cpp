@@ -164,13 +164,19 @@ Profile::Profile(QObject* parent) :
     d->dbus = new NativeDBusCaller(PROFILED_SERVICE, PROFILED_PATH, PROFILED_INTERFACE);
 
     d->activeProfile = activeProfile();
-    QStringList names = profileNames();
-    if (names.size() == 4) {
-        for (int i = 0; i < names.size(); i++) {
-            d->names[i] = names.at(i);
-            d->volumes[i] = volumeLevel(names.at(i));
-            d->vibras[i] = isVibrationEnabled(names.at(i));
+    d->names = profileNames();
+    if (d->names.size() > 0) {
+        for (int i = 0; i < d->names.size(); i++) {
+            if (i >= PROFILE_MAX_PROFILES){
+                qDebug() << Q_FUNC_INFO << "Cannot fit more profiles, dropping "
+                                        << d->names.at(i);
+                continue;
+            }
+            d->volumes[i] = volumeLevel(d->names.at(i));
+            d->vibras[i] = isVibrationEnabled(d->names.at(i));
         }
+    } else {
+        qDebug() << Q_FUNC_INFO << "No profiles found!";
     }
 
     connect(d->dbus, SIGNAL(profile_changed(bool, bool, QString, QList<MyStructure>)),
@@ -341,8 +347,8 @@ void Profile::handleProfileChanged(bool changed, bool active, QString profile,
         }
     }
 
-    for (int i = 0; i < 4; i++) {
-        if (d->names[i] == profile) {
+    for (int i = 0; i < d->names.size(); i++) {
+        if (d->names.at(i) == profile) {
             // check for changes
             for (int j = 0; j < keyValType.size(); ++j) {
                 MyStructure s = keyValType.at(j);
