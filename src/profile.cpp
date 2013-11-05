@@ -174,6 +174,7 @@ Profile::Profile(QObject* parent) :
             }
             d->volumes[i] = volumeLevel(d->names.at(i));
             d->vibras[i] = isVibrationEnabled(d->names.at(i));
+            d->vibraLevels[i] = touchscreenVibrationLevel(d->names.at(i));
         }
     } else {
         qDebug() << Q_FUNC_INFO << "No profiles found!";
@@ -278,6 +279,24 @@ bool Profile::isVibrationEnabled(QString profileName)
     return vibra;
 }
 
+int Profile::touchscreenVibrationLevel(QString profileName)
+{
+    //qDebug() << Q_FUNC_INFO  << profileName;
+    Q_D(Profile);
+    int vibraLevel = 1;
+    QDBusMessage reply = d->dbus->call(PROFILED_GET_VALUE,
+                                       QVariant(profileName),
+                                       QVariant(PROFILEKEY_TOUCHSCREEN_VIBRA_LEVEL));
+
+    if (reply.type() == QDBusMessage::ErrorMessage) {
+        qDebug() << Q_FUNC_INFO << "error reply:" << reply.errorName();
+    } else if (reply.arguments().count() > 0) {
+        vibraLevel = reply.arguments().at(0).toString().toInt();
+    }
+
+    return vibraLevel;
+}
+
 bool Profile::setVolumeLevel(QString profileName, int level)
 {
     //qDebug() << Q_FUNC_INFO << profileName << level;
@@ -326,6 +345,31 @@ bool Profile::setVibration(QString profileName, bool enabled)
     return success;
 }
 
+bool Profile::setTouchscreenVibrationLevel(QString profileName, int level)
+{
+    //qDebug() << Q_FUNC_INFO << profileName << level;
+    Q_D(Profile);
+
+    // limit the value in range 0-2
+    if (level < 0)
+        level = 0;
+    if (level > 2)
+        level = 2;
+
+    bool success = false;
+    QDBusMessage reply = d->dbus->call(PROFILED_SET_VALUE,
+                                       QVariant(profileName),
+                                       QVariant(PROFILEKEY_TOUCHSCREEN_VIBRA_LEVEL),
+                                       QVariant(QString::number(level)));
+
+    if (reply.type() == QDBusMessage::ErrorMessage) {
+        qDebug() << Q_FUNC_INFO << "error reply:" << reply.errorName();
+    } else if (reply.arguments().count() > 0) {
+        success = reply.arguments().at(0).toBool();
+    }
+    return success;
+}
+
 void Profile::handleProfileChanged(bool changed, bool active, QString profile,
                                    QList<MyStructure> keyValType)
 {
@@ -363,6 +407,13 @@ void Profile::handleProfileChanged(bool changed, bool active, QString profile,
                     if (volume != d->volumes[i]) {
                         emit volumeLevelChanged(profile, volume);
                         d->volumes[i] = volume;
+                    }
+                } else if (s.key == PROFILEKEY_TOUCHSCREEN_VIBRA_LEVEL) {
+                    int vibraLevel = s.val.toInt();
+                    if (vibraLevel != d->vibraLevels[i]) {
+                        emit touchscreenVibrationLevelChanged(profile,
+                                                              vibraLevel);
+                        d->vibraLevels[i] = vibraLevel;
                     }
                 }
             }

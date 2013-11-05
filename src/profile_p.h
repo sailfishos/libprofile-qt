@@ -96,6 +96,7 @@ protected:
     QStringList names;
     int volumes[PROFILE_MAX_PROFILES];
     bool vibras[PROFILE_MAX_PROFILES];
+    int vibraLevels[PROFILE_MAX_PROFILES];
 
 #ifdef UNIT_TEST
     friend class Ut_Profile;

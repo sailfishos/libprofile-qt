@@ -141,6 +141,16 @@ public Q_SLOTS:
     bool isVibrationEnabled(QString profileName);
 
     /*!
+     * Returns touch screen vibration level.
+     * Touch screen vibration level range is 0 - 2 where 0 means no vibration.
+     *
+     * \param profileName Name of the profile interested of.
+     * \return level of the vibration.
+     * \sa setTouchscreenVibrationLevel(QString profileName, int level)
+     **/
+    int touchscreenVibrationLevel(QString profileName);
+
+    /*!
      * Set volume level.
      * Volume level range is 0 - 100 where 0 means no ringing.
      * \e Level is set to 0 or 100 if value is outside of the range.
@@ -161,6 +171,17 @@ public Q_SLOTS:
      * \return status. If operation succeeds, returns \e true, \e false otherways.
      **/
     bool setVibration(QString profileName, bool enabled);
+
+    /*!
+     * Set touch screen vibration level.
+     * Touch screen vibration level range is 0 - 2 where 0 means no vibration.
+     * \e Level is set to 0 or 2 if value is outside of the range.
+     *
+     * \param profileName Name of the profile to modify
+     * \param level New touch screen vibration level to set for the profile. \sa touchscreenVibrationLevel(QString profileName)
+     * \return status. If operation succeeds, returns \e true, \e false otherways.
+     **/
+    bool setTouchscreenVibrationLevel(QString profileName, int level);
 
 signals:
 
@@ -184,6 +205,16 @@ signals:
      * \sa isVibrationEnabled(QString profileName), setVibration(QString profileName, bool enabled)
      **/
     void vibrationChanged(QString profileName, bool enabled);
+
+    /*!
+     * Signal emitted after changes to profile data
+     * Touchscreen vibration level range is 0 - 2 where 0 means no vibration.
+     *
+     * \param profileName Name of the changed profile
+     * \param level \e new touch screen vibration level
+     * \sa setTouchscreenVibrationLevel(QString profileName, int level),
+     **/
+    void touchscreenVibrationLevelChanged(QString profileName, int level);
 
     /*!
      * Signal emitted when active profile is changed to new one.
