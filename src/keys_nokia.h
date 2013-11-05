@@ -50,6 +50,7 @@
 #define PROFILEKEY_KEYPAD_SOUND_LEVEL      "keypad.sound.level"      /* Key sounds */
 #define PROFILEKEY_SYSTEM_SOUND_LEVEL      "system.sound.level"      /* System sounds */
 #define PROFILEKEY_TOUCHSCREEN_SOUND_LEVEL "touchscreen.sound.level" /* Touch screen sounds */
+#define PROFILEKEY_TOUCHSCREEN_VIBRA_LEVEL "touchscreen.vibration.level" /* Touch screen vibration */
 #define PROFILEKEY_CLOCK_ALARM_ENABLED     "clock.alarm.enabled"     /* Clock alarm */
 #define PROFILEKEY_CALENDAR_ALARM_ENABLED  "calendar.alarm.enabled"  /* Calendar alarm */
 

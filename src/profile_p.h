@@ -42,9 +42,10 @@
 #include <QDBusMessage>
 #include <QDBusArgument>
 #include <QList>
+
+#define PROFILE_MAX_PROFILES	10
+
 class QDBusInterface;
-
-
 
 class DBusCaller : public QObject
 {
@@ -92,9 +93,10 @@ protected:
     Profile* q_ptr;
 
     QString activeProfile;
-    QString names[4];
-    int volumes[4];
-    bool vibras[4];
+    QStringList names;
+    int volumes[PROFILE_MAX_PROFILES];
+    bool vibras[PROFILE_MAX_PROFILES];
+    int vibraLevels[PROFILE_MAX_PROFILES];
 
 #ifdef UNIT_TEST
     friend class Ut_Profile;

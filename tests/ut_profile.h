@@ -76,12 +76,15 @@ private slots:
     void testSetActiveProfile();
     void testProfileNames();
     void testVolumeLevel();
+    void testTouchscreenVibrationLevel();
     void testIsVibrationEnabled();
     void testSetVolumeLevel();
+    void testSetTouchscreenVibrationLevel();
     void testSetVibration();
 
     // signals to receive
     void testVolumeLevelChanged();
+    void testTouchscreenVibrationLevelChanged();
     void testVibrationChanged();
     void testActiveProfileChanged();
 
