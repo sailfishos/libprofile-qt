@@ -166,7 +166,7 @@ Profile::Profile(QObject* parent) :
     d->activeProfile = activeProfile();
     QStringList names = profileNames();
     if (names.size() == 4) {
-        for (int i = 0; i < names.size(); ++i) {
+        for (int i = 0; i < names.size(); i++) {
             d->names[i] = names.at(i);
             d->volumes[i] = volumeLevel(names.at(i));
             d->vibras[i] = isVibrationEnabled(names.at(i));
