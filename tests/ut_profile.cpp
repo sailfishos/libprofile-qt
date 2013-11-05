@@ -117,6 +117,10 @@ void Ut_Profile::initTestCase()
     m_subject->d_ptr->volumes[1] = 20;
     m_subject->d_ptr->volumes[2] = 30;
     m_subject->d_ptr->volumes[3] = 0;
+    m_subject->d_ptr->vibraLevels[0] = 1;
+    m_subject->d_ptr->vibraLevels[1] = 2;
+    m_subject->d_ptr->vibraLevels[2] = 1;
+    m_subject->d_ptr->vibraLevels[3] = 0;
 }
 
 void Ut_Profile::cleanupTestCase()
@@ -185,6 +189,15 @@ void Ut_Profile::testVolumeLevel()
     QVERIFY(0 == m_subject->volumeLevel(ProfileName::silent));
 }
 
+void Ut_Profile::testTouchscreenVibrationLevel()
+{
+    QDBusMessage msg;
+    msg << QVariant(1);
+    mocDbus->setReply(msg);
+
+    QVERIFY(1 == m_subject->touchscreenVibrationLevel("anything"));
+}
+
 void Ut_Profile::testIsVibrationEnabled()
 {
     QDBusMessage msg;
@@ -203,6 +216,15 @@ void Ut_Profile::testSetVolumeLevel()
     QVERIFY(m_subject->setVolumeLevel("anything", 123));
 }
 
+void Ut_Profile::testSetTouchscreenVibrationLevel()
+{
+    QDBusMessage msg;
+    msg << QVariant(2);
+    mocDbus->setReply(msg);
+
+    QVERIFY(m_subject->setVolumeLevel("anything", 2));
+}
+
 void Ut_Profile::testSetVibration()
 {
     QDBusMessage msg;
@@ -219,6 +241,7 @@ void Ut_Profile::testVolumeLevelChanged()
     m_subject->d_ptr->names[0] = ProfileName::ringing;
     m_subject->d_ptr->vibras[0] = true;
     m_subject->d_ptr->volumes[0] = 10;
+    m_subject->d_ptr->vibraLevels[0] = 1;
     */
 
     QList<MyStructure> arr;
@@ -237,6 +260,34 @@ void Ut_Profile::testVolumeLevelChanged()
     m_subject->handleProfileChanged(false, false, ProfileName::ringing, arr);
     QVERIFY(spy.count() == 0);
 }
+
+void Ut_Profile::testTouchscreenVibrationLevelChanged()
+{
+    /*
+    m_subject->d_ptr->activeProfile = ProfileName::ringing;
+    m_subject->d_ptr->names[0] = ProfileName::ringing;
+    m_subject->d_ptr->vibras[0] = true;
+    m_subject->d_ptr->volumes[0] = 10;
+    m_subject->d_ptr->vibraLevels[0] = 1;
+    */
+
+    QList<MyStructure> arr;
+    MyStructure foo = { PROFILEKEY_TOUCHSCREEN_VIBRA_LEVEL, "0", "type" };
+    arr << foo;
+    QSignalSpy spy(m_subject, SIGNAL(touchscreenVibrationLevelChanged(QString,int)));
+
+    m_subject->handleProfileChanged(false, false, ProfileName::ringing, arr);
+
+    QVERIFY(spy.count() == 1);
+    QList<QVariant> arguments = spy.takeFirst();
+    QCOMPARE(arguments.at(0).toString(), ProfileName::ringing);
+    QCOMPARE(arguments.at(1).toInt(), 0);
+
+    // same again
+    m_subject->handleProfileChanged(false, false, ProfileName::ringing, arr);
+    QVERIFY(spy.count() == 0);
+}
+
 void Ut_Profile::testVibrationChanged()
 {
     /*
@@ -262,6 +313,7 @@ void Ut_Profile::testVibrationChanged()
     m_subject->handleProfileChanged(false, false, ProfileName::ringing, arr);
     QVERIFY(spy.count() == 0);
 }
+
 void Ut_Profile::testActiveProfileChanged()
 {
     QList<MyStructure> arr;

@@ -7,6 +7,10 @@
                type="Functional" level="Component" timeout="600">
              <step expected_result="0">/usr/lib/@PACKAGENAME@-tests/ut_profile testSetVolumeLevel</step>
          </case>
+         <case name="testSetTouchscreenVibrationLevel" description="Unit test"
+               type="Functional" level="Component" timeout="600">
+             <step expected_result="0">/usr/lib/@PACKAGENAME@-tests/ut_profile testSetTouchscreenVibrationLevel</step>
+         </case>
          <case name="testActiveProfile" description="Unit test" 
                type="Functional" level="Component" timeout="600">
              <step expected_result="0">/usr/lib/@PACKAGENAME@-tests/ut_profile testActiveProfile</step>
@@ -22,6 +26,10 @@
          <case name="testVolumeLevelChanged" description="Unit test" 
                type="Functional" level="Component" timeout="600">
              <step expected_result="0">/usr/lib/@PACKAGENAME@-tests/ut_profile testVolumeLevelChanged</step>
+         </case>
+         <case name="testTouchscreenVibrationLevelChanged" description="Unit test"
+               type="Functional" level="Component" timeout="600">
+             <step expected_result="0">/usr/lib/@PACKAGENAME@-tests/ut_profile testTouchscreenVibrationLevelChanged</step>
          </case>
          <case name="testActiveProfileChanged" description="Unit test" 
                type="Functional" level="Component" timeout="600">
@@ -42,6 +50,10 @@
          <case name="testVolumeLevel" description="Unit test" 
                type="Functional" level="Component" timeout="600">
              <step expected_result="0">/usr/lib/@PACKAGENAME@-tests/ut_profile testVolumeLevel</step>
+         </case>
+         <case name="testTouchscreenVibrationLevel" description="Unit test"
+               type="Functional" level="Component" timeout="600">
+             <step expected_result="0">/usr/lib/@PACKAGENAME@-tests/ut_profile testTouchscreenVibrationLevel</step>
          </case>
          <case name="testSetActiveProfile" description="Unit test" 
                type="Functional" level="Component" timeout="600">
