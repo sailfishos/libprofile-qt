@@ -1,6 +1,5 @@
 TEMPLATE = lib
-equals(QT_MAJOR_VERSION, 4): TARGET = profile-qt
-equals(QT_MAJOR_VERSION, 5): TARGET = profile-qt5
+TARGET = profile-qt5
 QT += dbus
 QT -= gui
 contains(cov, true) { 
@@ -21,7 +20,6 @@ HEADERS = profile.h \
     keys_nokia.h \
     profile_dbus.h
 SOURCES = profile.cpp
-DESTDIR = lib
 target.path += $$(DEBIAN_DESTDIR)$$[QT_INSTALL_LIBS]
 target.files += lib/*
 headers.path = $$(DEBIAN_DESTDIR)/usr/include/$$TARGET

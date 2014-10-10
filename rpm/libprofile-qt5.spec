@@ -70,7 +70,7 @@ API documentation for libprofile-qt5
 
 %qmake5 
 
-make %{?jobs:-j%jobs}
+make %{_smp_mflags}
 
 # >> build post
 # << build post
@@ -79,7 +79,7 @@ make %{?jobs:-j%jobs}
 rm -rf %{buildroot}
 # >> install pre
 # << install pre
-%qmake_install
+%qmake5_install
 
 # >> install post
 # << install post
