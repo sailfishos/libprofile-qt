@@ -1,5 +1,4 @@
-equals(QT_MAJOR_VERSION, 4): PACKAGENAME = libprofile-qt
-equals(QT_MAJOR_VERSION, 5): PACKAGENAME = libprofile-qt5
+PACKAGENAME = libprofile-qt5
 
 system(sed -e s/@PACKAGENAME@/$${PACKAGENAME}/g tests.xml.template > tests.xml)
 
