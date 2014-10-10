@@ -20,7 +20,6 @@ HEADERS = profile.h \
     keys_nokia.h \
     profile_dbus.h
 SOURCES = profile.cpp
-DESTDIR = lib
 target.path += $$(DEBIAN_DESTDIR)$$[QT_INSTALL_LIBS]
 target.files += lib/*
 headers.path = $$(DEBIAN_DESTDIR)/usr/include/$$TARGET
