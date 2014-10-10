@@ -15,7 +15,6 @@ Group:      System/System Control
 License:    LGPLv2.1
 URL:        http://github.com/nemomobile/libprofile-qt
 Source0:    %{name}-%{version}.tar.bz2
-Source100:  libprofile-qt5.yaml
 Requires:   profiled
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
