@@ -12,8 +12,8 @@ Summary:    Qt5 library for profiles
 Version:    0.34.0.4
 Release:    1
 Group:      System/System Control
-License:    LGPLv2.1
-URL:        http://github.com/nemomobile/libprofile-qt
+License:    BSD
+URL:        https://git.sailfishos.org/mer-core/libprofile-qt
 Source0:    %{name}-%{version}.tar.bz2
 Requires:   profiled
 Requires(post): /sbin/ldconfig
