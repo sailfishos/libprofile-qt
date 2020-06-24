@@ -4,7 +4,7 @@ system(sed -e s/@PACKAGENAME@/$${PACKAGENAME}/g tests.xml.template > tests.xml)
 
 TEMPLATE = app
 TARGET = ut_profile
-target.path = /usr/lib/$${PACKAGENAME}-tests
+target.path = $$[QT_INSTALL_LIBS]/$${PACKAGENAME}-tests
 xml.path = /usr/share/$${PACKAGENAME}-tests
 xml.files = tests.xml
 
