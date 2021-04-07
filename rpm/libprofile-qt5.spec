@@ -18,7 +18,6 @@ Qt5 wrapper library for profiles
 
 %package -n libprofile-qt5-devel
 Summary:    Development headers for libprofile-qt5 library
-Group:      Development/Libraries
 Requires:   %{name} = %{version}-%{release}
 Requires:   pkgconfig(Qt5Core)
 Requires:   libprofile-qt5 = %{version}
@@ -27,19 +26,8 @@ Requires:   libprofile-qt5 = %{version}
 Development headers for libprofile-qt5 library
 
 
-%package -n libprofile-qt5-tests
-Summary:    Unit tests for libprofile-qt5
-Group:      Development/System
-Requires:   %{name} = %{version}-%{release}
-Requires:   libprofile-qt5 = %{version}
-
-%description -n libprofile-qt5-tests
-Unit tests for libprofile-qt5
-
-
 %package -n libprofile-qt5-doc
 Summary:    API documentation for libprofile-qt5
-Group:      Documentation
 BuildArch:  noarch
 Requires:   %{name} = %{version}-%{release}
 
@@ -71,11 +59,6 @@ rm -rf %{buildroot}
 %{_libdir}/libprofile-qt5.so
 %{_includedir}/profile-qt5/Profile
 %{_includedir}/profile-qt5/profile.h
-
-%files -n libprofile-qt5-tests
-%defattr(-,root,root,-)
-%{_libdir}/libprofile-qt5-tests/ut_profile
-%{_datadir}/libprofile-qt5-tests/tests.xml
 
 %files -n libprofile-qt5-doc
 %defattr(-,root,root,-)
