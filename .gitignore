@@ -6,3 +6,5 @@ tests/tests.xml
 tests/ut_profile
 doc/html
 src/lib
+src/libprofile-qt*.so*
+.qmake.stash

@@ -45,13 +45,9 @@
 
 
 #if defined(PROFILE_QT)
-#    define P_EXPORT Q_DECL_EXPORT
+    #define P_EXPORT Q_DECL_EXPORT
 #else
-#    if defined (Q_OS_WIN)
-#        define P_EXPORT Q_DECL_IMPORT
-#    else
-#        define P_EXPORT Q_DECL_EXPORT
-#    endif
+    #define P_EXPORT Q_DECL_IMPORT
 #endif
 
 struct MyStructure {

@@ -1,5 +1,5 @@
 TEMPLATE = lib
-TARGET = profile-qt5
+TARGET = profile-qt$${QT_MAJOR_VERSION}
 QT += dbus
 QT -= gui
 contains(cov, true) { 
