@@ -1,9 +1,9 @@
 Name:       libprofile-qt5
 Summary:    Qt5 library for profiles
-Version:    0.34.0.4
+Version:    0.35.7
 Release:    1
 License:    BSD
-URL:        https://git.sailfishos.org/mer-core/libprofile-qt
+URL:        https://github.com/sailfishos/libprofile-qt
 Source0:    %{name}-%{version}.tar.bz2
 Requires:   profiled
 Requires(post): /sbin/ldconfig
@@ -39,11 +39,10 @@ API documentation for libprofile-qt5
 %setup -q -n %{name}-%{version}
 
 %build
-%qmake5 
-make %{_smp_mflags}
+%qmake5
+%make_build
 
 %install
-rm -rf %{buildroot}
 %qmake5_install
 
 %post -p /sbin/ldconfig
@@ -51,15 +50,12 @@ rm -rf %{buildroot}
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %{_libdir}/libprofile-qt5.so.*
 
 %files -n libprofile-qt5-devel
-%defattr(-,root,root,-)
 %{_libdir}/libprofile-qt5.so
 %{_includedir}/profile-qt5/Profile
 %{_includedir}/profile-qt5/profile.h
 
 %files -n libprofile-qt5-doc
-%defattr(-,root,root,-)
 %{_docdir}/libprofile-qt5/*
